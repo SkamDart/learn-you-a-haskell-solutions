@@ -28,10 +28,14 @@ isPalindrome' [_] = True
 isPalindrome' l   = (head l == (last l)) && isPalindrome' tail (init l)
 
 duplicate :: [a] -> [a]
-duplicate = undefined
+duplicate []     = []
+duplicate (x:xs) = x:x:(duplicate xs)
 
 ziplike :: [a] -> [b] -> [(a, b)]
-ziplike = undefined
+ziplike [] [] = []
+ziplike a  []  = a
+ziplike [] b  = b
+ziplike a  b   = (head a, head b): ziplike (tail a) (tail b)
 
 splitAtIndex :: int -> [a] -> [a]
 splitAtIndex = undefined
