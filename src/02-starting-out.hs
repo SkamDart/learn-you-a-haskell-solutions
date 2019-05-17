@@ -1,6 +1,7 @@
 module Lib
 (
-  findK
+  penultimate
+  , findK
   , isPalindrome
   , duplicate
   , ziplike
@@ -11,12 +12,20 @@ module Lib
   , rotate
 ) where
 
-findK :: a -> [a] -> a
-findK = undefined
+penultimate :: [a] -> a
+penultimate l = last (init l)
 
-isPalindrome :: [a] -> [a] -> bool
-isPalindrome = undefined
+findK :: (Eq a, Eq b, Num b, Ord b) => b -> [a] -> a
+findK k l | k > 0 && l == [] = error "index longer than length"
+          | k < 0            = error "positive indicies only"
+          | k == 0           = head l
+          | otherwise        = findK (k - 1) (tail l)
 
+isPalindrome :: (Eq a) => [a] -> [a] -> Bool
+isPalindrome [] = error "isPalindrome cannot handle an empty list"
+
+isPalindrome' [_] = True
+isPalindrome' l   = (head l == (last l)) && isPalindrome' tail (init l)
 
 duplicate :: [a] -> [a]
 duplicate = undefined
@@ -36,6 +45,6 @@ slice = undefined
 insertElem :: a -> int -> [k]
 insertElem = undefined
 
-rotate :: int -> [a] -> [a]
+rotate :: Int -> [a] -> [a]
 rotate = undefined
 
