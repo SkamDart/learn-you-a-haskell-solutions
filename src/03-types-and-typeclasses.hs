@@ -19,3 +19,4 @@ reverseColorOrder = reverse [minBound :: Color .. maxBound :: Color]
 paintMix :: Color -> Color -> Color
 paintMix c1 c2 = colorRange !! quot (length colorRange) 2
   where colorRange = [c1 .. c2]
+
