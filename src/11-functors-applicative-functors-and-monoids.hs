@@ -22,8 +22,8 @@ instance Monoid (List a) where
   mempty = Empty
 
 -- Applicative
---instance Applicative List where
-  --pure = Value
-  --Empty <*> _ = Empty
-  --(Value f _) <*> y = fmap f y
+instance Applicative List where
+  pure a = (Value a Empty)
+  Empty <*> _ = Empty
+  (Value f _) <*> Empty = Empty
 
